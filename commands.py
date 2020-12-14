@@ -3,6 +3,11 @@ class Insert:
         self.string_to_add = string_to_add
         self.position = position
 
+    def __str__(self):
+        return f"Insert ({self.string_to_add}, {self.position})"
+
+    __repr__ = __str__
+
     def doIt(self, document):
         new_document = document[:self.position] + self.string_to_add + document[self.position:]
         return new_document
@@ -16,6 +21,11 @@ class Delete:
         self.start_position = start_position
         self.end_position = end_position
         self.deleted_string = None
+
+    def __str__(self):
+        return f"Delete ({self.start_position}, {self.end_position})"
+
+    __repr__ = __str__
 
     def doIt(self, document):
         self.deleted_string = document[self.start_position:self.end_position + 1]

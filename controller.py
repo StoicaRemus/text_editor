@@ -5,7 +5,9 @@ def printDocument(function):
 
     def proxy(*argv, **kwargs):
         result = function(*argv, **kwargs)
-        print(argv[0].document)
+        print(f"Document: {argv[0].document}")
+        print(f"History: {argv[0].history_list}")
+        print(f"Last command: {argv[0].history_list_counter}")
         return result
     return proxy
 

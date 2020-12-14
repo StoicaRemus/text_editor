@@ -17,19 +17,27 @@ class Controller:
 
     @printDocument
     def insert(self, string_to_add, position):
-        command = Insert(string_to_add, position)
-        self.document = command.doIt(self.document)
-        self.history_list[self.history_list_counter + 1:] = []
-        self.history_list.append(command)
-        self.history_list_counter = len(self.history_list) - 1
+        self.process(Insert(string_to_add, position))
+        # command = Insert(string_to_add, position)
+        # self.document = command.doIt(self.document)
+        # self.history_list[self.history_list_counter + 1:] = []
+        # self.history_list.append(command)
+        # self.history_list_counter = len(self.history_list) - 1
 
     @printDocument
     def delete(self, start_position, end_position):
-        command = Delete(start_position, end_position)
+        self.process(Delete(start_position, end_position))
+        # command = Delete(start_position, end_position)
+        # self.document = command.doIt(self.document)
+        # self.history_list[self.history_list_counter + 1:] = []
+        # self.history_list.append(command)
+        # # self.history_list_counter += 1
+        # self.history_list_counter = len(self.history_list) - 1
+
+    def process(self, command):
         self.document = command.doIt(self.document)
         self.history_list[self.history_list_counter + 1:] = []
         self.history_list.append(command)
-        # self.history_list_counter += 1
         self.history_list_counter = len(self.history_list) - 1
 
     @printDocument

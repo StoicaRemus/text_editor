@@ -7,7 +7,7 @@ class Insert:
         new_document = document[:self.position] + self.string_to_add + document[self.position:]
         return new_document
 
-    def redoIt(self, document):
+    def undoIt(self, document):
         old_document = document[:self.position] + document[self.position + len(self.string_to_add):]
         return old_document
 
@@ -22,6 +22,6 @@ class Delete:
         new_document = document[:self.start_position] + document[self.end_position + 1:]
         return new_document
 
-    def redoIt(self, document):
+    def undoIt(self, document):
         old_document = document[:self.start_position] + self.deleted_string + document[self.start_position:]
         return old_document
